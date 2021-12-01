@@ -1,6 +1,6 @@
 <?php
 /*
-* 2020 Kevin. payment  for OpenCart version 2.0.x.x - 2.2.x.x 
+* 2020 kevin. payment  for OpenCart version 2.0.x.x - 2.2.x.x 
 * @version 1.0.0.1
 *
 * NOTICE OF LICENSE
@@ -79,18 +79,17 @@ class ControllerModuleKevinRefund extends Controller {
 		
 		$kevinClient =  $this->kevinClient();
 		$project = $kevinClient->auth()->getProjectSettings();
-
+		
+		$data['text_sandbox_alert'] = '';
+		$data['error_client'] = '';
+		
 		if (empty($project['allowedRefundsFor'])) {
 			if (!empty($project['error']['code'])) {
-				$data['error_client'] = 'Can not connect to <span style="font-weight: 600; color:red;">Kevin. </span> Error: ' . $project['error']['name'] . '.  Error code: ' . $project['error']['code'];
-				$this->KevinRefundLog('Can not connect to Kevin.  Error: ' . $project['error']['name'] . '.  Error code: ' . $project['error']['code']);
-			} else {
-				$data['error_client'] = 'Can not connect to <span style="font-weight: 600; color:red;">Kevin. </span> due to server error!';
-				$this->KevinRefundLog('Can not connect to Kevin. due to server error!');
+				$data['error_client'] = 'Can not connect to <span style="font-weight: 600; color:red;">kevin. </span> Error: ' . $project['error']['name'] . '.  Error code: ' . $project['error']['code'];
+				$this->KevinRefundLog('Can not connect to kevin.  Error: ' . $project['error']['name'] . '.  Error code: ' . $project['error']['code']);
 			}
 			$project_settings = false;
-		} else {
-			$data['error_client'] = '';
+		} else {		
 			$payment_methods = $project['allowedRefundsFor'];
 			function cmp($a, $b) {
 				if ($a != 'card') {
@@ -106,10 +105,8 @@ class ControllerModuleKevinRefund extends Controller {
 			if ($refunds) {
 				usort($refunds, "cmp");
 			}
-			if ($project['isSandbox']) {
-				$data['text_sandbox_alert'] = '<span style="font-weight: 600; color:red;">Kevin.</span> Refunds is set to Sandbox mode. Only for test Refunds. Real Refunds is not available!';
-			} else {
-				$data['text_sandbox_alert'] = '';
+			if (!empty($project['isSandbox']) && $project['isSandbox']) {
+				$data['text_sandbox_alert'] = '<span style="font-weight: 600; color:red;">kevin.</span> Refunds is set to Sandbox mode. Only for test Refunds. Real Refunds is not available!';
 			}
 			$project_settings = $project;
 		}
@@ -127,13 +124,7 @@ class ControllerModuleKevinRefund extends Controller {
 		} else {
 			$data['success_refund'] = '';
 		}
-		
-		if (!empty($project_settings['isSandbox']) && $project_settings['isSandbox']) {
-			$data['text_sandbox_alert'] = '<span style="font-weight: 600; color:red;">Kevin.</span> Refunds is set to Sandbox mode. Only for test Refunds. Real Refunds is not available!';
-		} else {
-			$data['text_sandbox_alert'] = '';
-		}
-		
+
 		if (isset($this->request->get['filter_order_id'])) {
 			$filter_order_id = $this->request->get['filter_order_id'];
 		} else {
@@ -270,7 +261,7 @@ class ControllerModuleKevinRefund extends Controller {
 
 		if (empty($refunds)) {
 			$results = array();
-			$data['refund_warning'] = '<span style="font-weight: 600; color:red;">Kevin.</span> refunds is not allowed! Please contact <a style="font-weight: 800; color:red;" href="https://kevin.eu" target="_blank">Kevin.</a>';
+			$data['refund_warning'] = '<span style="font-weight: 600; color:red;">kevin.</span> refunds is not allowed! Please contact <a style="font-weight: 800; color:red;" href="https://kevin.eu" target="_blank">kevin.</a>';
 		} else {
 			$data['refund_warning'] = '';
 			$results = $this->model_module_kevin_refund->getOrders($filter_data); 
@@ -562,8 +553,8 @@ class ControllerModuleKevinRefund extends Controller {
 		$project = $kevinClient->auth()->getProjectSettings();
 
 		if (empty($project['allowedRefundsFor'])) {
-			$data['error_client'] = 'Can not connect to <span style="font-weight: 600; color:red;">Kevin. </span> Error: ' . $project['error']['name'] . '.  Error code: ' . $project['error']['code'];
-			//$this->KevinRefundLog('Can not connect to Kevin.  Error: ' . $project['error']['name'] . '.  Error code: ' . $project['error']['code']);
+			$data['error_client'] = 'Can not connect to <span style="font-weight: 600; color:red;">kevin. </span> Error: ' . $project['error']['name'] . '.  Error code: ' . $project['error']['code'];
+			//$this->KevinRefundLog('Can not connect to kevin.  Error: ' . $project['error']['name'] . '.  Error code: ' . $project['error']['code']);
 			$project_settings = false;
 		} else {
 			$data['error_client'] = '';
@@ -1106,7 +1097,7 @@ class ControllerModuleKevinRefund extends Controller {
 
 		$refunds = !empty($project_settings['allowedRefundsFor']) ? $project_settings['allowedRefundsFor'] : '';; 
 		if (empty($refunds)) {
-			$this->session->data['error_refund'] = 'An error occurred! You are not authorized to make refunds. Please contact <a style="font-weight: 800; color:red;" href="https://kevin.eu" target="_blank">Kevin.</a>';
+			$this->session->data['error_refund'] = 'An error occurred! You are not authorized to make refunds. Please contact <a style="font-weight: 800; color:red;" href="https://kevin.eu" target="_blank">kevin.</a>';
 			$this->response->redirect($this->url->link('module/kevin_refund', 'token=' . $this->session->data['token'], 'SSL'));
 			$this->KevinRefundLog($this->session->data['error_refund']);
 		}
