@@ -1,6 +1,6 @@
 <?php
 /*
-* 2020 Kevin. payment  for OpenCart version 2.0.x.x - 2.2.x.x 
+* 2020 kevin. payment  for OpenCart version 2.0.x.x - 2.2.x.x 
 * @version 1.0.0.1
 *
 * NOTICE OF LICENSE
