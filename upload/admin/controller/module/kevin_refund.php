@@ -1249,7 +1249,7 @@ class ControllerModuleKevinRefund extends Controller
         }
     }
 
-    /*refund log*/
+    /* refund log */
     public function KevinRefundLog($log_data)
     {
         if ($this->config->get('kevin_log')) {

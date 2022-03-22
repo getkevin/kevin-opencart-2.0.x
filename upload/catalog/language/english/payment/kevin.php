@@ -37,9 +37,9 @@ $_['error_bank'] = 'Bank not selected! Choose your bank.';
 $_['error_kevin_payment'] = 'An error occurred. Please contact the merchant for more information, or try another payment method.';
 $_['error_kevin_payment_id'] = 'An error occurred. Payment ID was not returned from the payment system. Please contact the merchant for more information.';
 
-//Button
+// Button
 $_['button_confirm'] = 'Confirm Order';
 $_['button_search'] = 'Search Autocomplete';
 
-//Help
+// Help
 $_['help_serch_bank'] = 'Search Bank';

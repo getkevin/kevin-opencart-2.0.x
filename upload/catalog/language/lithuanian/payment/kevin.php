@@ -37,9 +37,9 @@ $_['error_bank'] = 'Bankas nepasirinktas! Pasirinkite savo banką.';
 $_['error_kevin_payment'] = 'Įvyko klaida. Norėdami gauti daugiau informacijos, susisiekite su pardavėju arba bandykite atsiskaityti naudodami  kitą mokėjimo metodą.';
 $_['error_kevin_payment_id'] = 'Įvyko klaida. Iš mokėjimo sistemos negrąžintas mokėjimo ID. Norėdami gauti daugiau informacijos, susisiekite su pardavėju.';
 
-//Button
+// Button
 $_['button_confirm'] = 'Patvirtinti užsakymą';
 $_['button_search'] = 'Paieškos automatinis užbaigimas';
 
-//Help
+// Help
 $_['help_serch_bank'] = 'Ieškoti banką';
