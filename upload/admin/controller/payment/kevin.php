@@ -119,7 +119,7 @@ class ControllerPaymentKevin extends Controller
             $data['text_sandbox_alert'] = '';
         }
 
-        //checking if kevin DB is updated on module update/reinstall.
+        // checking if kevin DB is updated on module update/reinstall.
         $DB_query = $this->model_payment_kevin->checkKevinDB();
 
         if ($DB_query) {
@@ -265,7 +265,6 @@ class ControllerPaymentKevin extends Controller
             $data['error_client_endpointSecret'] = '';
         }
 
-        ////
         if (isset($this->error['started_status'])) {
             $data['error_started_status'] = $this->error['started_status'];
         } else {
@@ -371,7 +370,7 @@ class ControllerPaymentKevin extends Controller
             $data['kevin_client_secret'] = $this->config->get('kevin_client_secret');
         }
 
-        //endpointSecret
+        // endpointSecret
         if (isset($this->request->post['kevin_client_endpointSecret'])) {
             $data['kevin_client_endpointSecret'] = $this->request->post['kevin_client_endpointSecret'];
         } else {
@@ -600,7 +599,7 @@ class ControllerPaymentKevin extends Controller
             $data['kevin_refunded_action_id'] = $this->config->get('kevin_refunded_action_id');
         }
 
-        //refund log view
+        // refund log view
         $data['download_refund_log'] = $this->url->link('payment/kevin/download_refund_log', 'token='.$this->session->data['token'], 'SSL');
         $data['clear_refund_log'] = $this->url->link('payment/kevin/clear_refund_log', 'token='.$this->session->data['token'], 'SSL');
 
@@ -639,7 +638,7 @@ class ControllerPaymentKevin extends Controller
             }
         }
 
-        //payment log view
+        // payment log view
         $data['download_payment_log'] = $this->url->link('payment/kevin/download_payment_log', 'token='.$this->session->data['token'], 'SSL');
         $data['clear_payment_log'] = $this->url->link('payment/kevin/clear_payment_log', 'token='.$this->session->data['token'], 'SSL');
 
@@ -834,7 +833,7 @@ class ControllerPaymentKevin extends Controller
             $this->error['client_company'] = $this->language->get('error_client_company');
         }
 
-        //order statuses
+        // order statuses
         if (empty($this->request->post['kevin_started_status_id'])) {
             $this->error['started_status'] = $this->language->get('error_started_status');
         }
@@ -859,7 +858,7 @@ class ControllerPaymentKevin extends Controller
             $this->error['partial_status'] = $this->language->get('error_partial_status');
         }
 
-        //refund actions
+        // refund actions
         if (empty($this->request->post['kevin_created_action_id'])) {
             $this->error['created_action'] = $this->language->get('error_created_action');
         }

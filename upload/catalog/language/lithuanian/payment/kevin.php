@@ -31,7 +31,7 @@ $_['text_reason'] = 'Grąžinta, kad: %s';
 $_['text_subject'] = '%s grąžino jūsų pinigus. Užsakymo ID: %s';
 $_['text_thank_you'] = 'Ačiū kad perkate <br /> <strong>%s</strong>';
 
-//errors
+// Errors
 $_['error_currency'] = 'Jei norite atsiskaityti šiuo mokėjimo būdu, pasirinkite valiutą  <strong>&euro;</strong>.';
 $_['error_bank'] = 'Bankas nepasirinktas! Pasirinkite savo banką.';
 $_['error_kevin_payment'] = 'Įvyko klaida. Norėdami gauti daugiau informacijos, susisiekite su pardavėju arba bandykite atsiskaityti naudodami  kitą mokėjimo metodą.';

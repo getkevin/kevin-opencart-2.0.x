@@ -23,7 +23,7 @@ $_['text_status'] = 'Užsakymo statusas: %s';
 $_['text_status_group'] = 'Užsakymo statuso grupė: %s';
 $_['text_payment_id'] = 'Mokėjimo ID: %s';
 
-//errors
+// Errors
 $_['error_currency'] = 'Jei norite atsiskaityti šiuo mokėjimo būdu, pasirinkite valiutą  <strong>&euro;</strong>.';
 $_['error_bank'] = 'Bankas nepasirinktas! Pasirinkite savo banką.';
 $_['error_kevin_payment'] = 'Įvyko klaida. Norėdami gauti daugiau informacijos, susisiekite su pardavėju arba bandykite atsiskaityti naudodami  kitą mokėjimo metodą.';

@@ -383,7 +383,7 @@ class ControllerPaymentKevin extends Controller
             $lang = 'en';
         }
         unset($this->session->data['order_id']);
-        //header('Location:' . $init_payment['confirmLink'] . '&amp;lang=' . $lang);
+        // header('Location:' . $init_payment['confirmLink'] . '&amp;lang=' . $lang);
         $this->response->redirect($init_payment['confirmLink'].'&amp;lang='.$lang);
     }
 

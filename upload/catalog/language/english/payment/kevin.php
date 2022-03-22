@@ -31,7 +31,7 @@ $_['text_reason'] = 'Refunded on: %s';
 $_['text_subject'] = '%s has refunded your money. Order ID: %s';
 $_['text_thank_you'] = 'Thank You for buying <br /> <strong>%s</strong>';
 
-//errors
+// Errors
 $_['error_currency'] = 'Only &euro; currency are allowed for this payment method. Please select a currency <strong>&euro;</strong>.';
 $_['error_bank'] = 'Bank not selected! Choose your bank.';
 $_['error_kevin_payment'] = 'An error occurred. Please contact the merchant for more information, or try another payment method.';
