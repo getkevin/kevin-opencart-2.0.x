@@ -71,7 +71,7 @@ class ControllerPaymentKevin extends Controller
 
         $this->load->model('setting/setting');
 
-        if (('POST' == $this->request->server['REQUEST_METHOD']) && $this->validate()) {
+        if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
             $this->model_setting_setting->editSetting('kevin', $this->request->post);
 
             $this->session->data['success'] = $this->language->get('text_success');
@@ -104,10 +104,10 @@ class ControllerPaymentKevin extends Controller
         if (!empty($project['paymentMethods'])) {
             $data['payment_methods'] = true;
             foreach ($project['paymentMethods'] as $method) {
-                if ('bank' == $method) {
+                if ($method == 'bank') {
                     $data['payment_bank'] = ' Bank payment method is allowed.';
                 }
-                if ('card' == $method) {
+                if ($method == 'card') {
                     $data['payment_card'] = ' Card payment method is allowed.';
                 }
             }
@@ -793,7 +793,7 @@ class ControllerPaymentKevin extends Controller
                 }
                 $NewString .= $MovedCharArray[$key];
             }
-            if (1 == bcmod($NewString, '97')) {
+            if (bcmod($NewString, '97') == 1) {
                 return true;
             }
         }
@@ -887,7 +887,7 @@ class ControllerPaymentKevin extends Controller
             if (!$validate) {
                 $this->error['client_iban_valid'] = $this->language->get('error_client_iban_valid');
             }
-            if ('error_bcmod' === $validate) {
+            if ($validate === 'error_bcmod') {
                 $this->error['bcmod'] = $this->language->get('error_bcmod');
             }
         }
