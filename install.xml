@@ -1,53 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <modification>
-	<name>Kevin Payment/Refund OC 2.0.x.x - 2.2.x.x</name>
-	<version>1.0.0.2</version>
-	<code>KevinPayment_Refund</code>
+    <name>Kevin Payment/Refund OC 2.0.x.x - 2.2.x.x</name>
+    <version>1.0.0.2</version>
+    <code>KevinPayment_Refund</code>
     <author>Kevin.</author>
-	<link><![CDATA[https://getkevin.eu]]></link>
-	<file path="admin/controller/common/menu.php">
-
-		<operation error="skip">
-			<search>
-			<![CDATA[$data['text_order'] = $this->language->get('text_order');]]>
-			</search>
-			<add position="after">
-			<![CDATA[
+    <link><![CDATA[https://getkevin.eu]]></link>
+    <file path="admin/controller/common/menu.php">
+        <operation error="skip">
+            <search>
+                <![CDATA[$data['text_order'] = $this->language->get('text_order');]]>
+            </search>
+            <add position="after">
+                <![CDATA[
 		$this->load->language('module/kevin_refund');
 		$data['text_kevin_refund'] = $this->language->get('heading_title');
 		$data['kevin_refund_status'] = $this->config->get('kevin_refund_status');
 		$data['kevin_status'] = $this->config->get('kevin_status') ;
 			]]></add>
-		</operation>
-		<operation error="skip">
-			<search>
-			<![CDATA[$data['order'] = $this->url->link('sale/order', 'token=' . $this->session->data['token'], 'SSL');]]>
-			</search>
-			<add position="after">
-			<![CDATA[		$data['kevin_refund'] = $this->url->link('module/kevin_refund', 'token=' . $this->session->data['token'], 'SSL');]]></add>
-		</operation>	
-	</file>
-	
-	<file path="admin/view/template/common/menu.tpl">
-		<operation error="skip">
-			<search>
-			<![CDATA[<li><a href="<?php echo $order; ?>"><?php echo $text_order; ?></a></li>]]>
-			</search>
-			<add position="after">
-			<![CDATA[	<?php if ($kevin_refund_status && $kevin_status) { ?> 
+        </operation>
+        <operation error="skip">
+            <search>
+                <![CDATA[$data['order'] = $this->url->link('sale/order', 'token=' . $this->session->data['token'], 'SSL');]]>
+            </search>
+            <add position="after">
+                <![CDATA[		$data['kevin_refund'] = $this->url->link('module/kevin_refund', 'token=' . $this->session->data['token'], 'SSL');]]></add>
+        </operation>
+    </file>
+
+    <file path="admin/view/template/common/menu.tpl">
+        <operation error="skip">
+            <search>
+                <![CDATA[<li><a href="<?php echo $order; ?>"><?php echo $text_order; ?></a></li>]]>
+            </search>
+            <add position="after">
+                <![CDATA[	<?php if ($kevin_refund_status && $kevin_status) { ?>
 	<li><a href="<?php echo $kevin_refund; ?>"><?php echo $text_kevin_refund; ?></a></li>
 	<?php } ?>]]></add>
-		</operation>	
-	</file>
-	
-	<file path="catalog/model/checkout/order.php">
-		<operation error="skip">
-			<search>
-			<![CDATA[$this->db->query("DELETE FROM `" . DB_PREFIX . "order` WHERE order_id = '" . (int)$order_id . "'");]]>
-			</search>
-			<add position="before">
-			<![CDATA[		$this->db->query("DELETE FROM `" . DB_PREFIX . "kevin_order` WHERE order_id = '" . (int)$order_id . "'");
+        </operation>
+    </file>
+
+    <file path="catalog/model/checkout/order.php">
+        <operation error="skip">
+            <search>
+                <![CDATA[$this->db->query("DELETE FROM `" . DB_PREFIX . "order` WHERE order_id = '" . (int)$order_id . "'");]]>
+            </search>
+            <add position="before">
+                <![CDATA[		$this->db->query("DELETE FROM `" . DB_PREFIX . "kevin_order` WHERE order_id = '" . (int)$order_id . "'");
 		$this->db->query("DELETE FROM `" . DB_PREFIX . "kevin_refund` WHERE order_id = '" . (int)$order_id . "'");]]></add>
-		</operation>	
-	</file>
+        </operation>
+    </file>
+
+    <file path="admin/controller/extension/payment.php">
+        <operation error="skip">
+            <search>
+                <![CDATA[<?php]]>
+            </search>
+            <add position="after">
+                <![CDATA[// kevin. version
+define('KEVIN_VERSION', '1.0.0.2');]]></add>
+        </operation>
+    </file>
 </modification>
