@@ -1,7 +1,7 @@
 <?php
 /*
 * 2020 kevin. payment  for OpenCart version 2.0.x.x - 2.2.x.x
-* @version 1.0.0.1
+* @version 1.0.0.2
 *
 * NOTICE OF LICENSE
 *
@@ -19,7 +19,7 @@ use Kevin\Client;
 class ModelPaymentKevin extends Model
 {
     private $lib_version = '0.3';
-    private $plugin_version = '1.0.0.1';
+    private $plugin_version = '1.0.0.2';
 
     public function getMethod($address, $total)
     {
@@ -64,7 +64,6 @@ class ModelPaymentKevin extends Model
         $payment_methods = $project_settings['paymentMethods'];
 
         $contries = $kevinClient->auth()->getCountries();
-        // $countryCodes = array("LT", "LV", "EE");
         $countryCodes = $contries['data'];
         if ((in_array($current_country_code, $countryCodes) || in_array('card', $payment_methods)) && $status) {
             $status = true;
