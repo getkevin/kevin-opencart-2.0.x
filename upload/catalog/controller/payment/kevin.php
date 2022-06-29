@@ -368,19 +368,12 @@ class ControllerPaymentKevin extends Controller
         $log_data = 'Answer on Redirect kevin... Payment Method: '.$payment_method.'; Payment ID: '.$payment_id.'; Order ID: '.$order_id.'; Payment Status: '.$get_payment['statusGroup'].'; Total: '.$get_payment['amount'].$get_payment['currencyCode'].'; Bank ID: '.$bank_id.'.';
         $this->KevinLog($log_data);
 
-        $lang_code = $this->language->get('code');
-        /*
-        $available_lang = array('cs', 'en', 'es', 'et', 'fi', 'it', 'lt', 'lv', 'pt', 'ru', 'sk', 'sv');
-        if (in_array($lang_code, $available_lang)) {
-            $lang = $lang_code;
-        } else {
-            $lang = 'en';
-        }
-        */
-        $lang = $lang_code;
+        $lang = $this->language->get('code');
         unset($this->session->data['order_id']);
 
-        $this->response->redirect($init_payment['confirmLink'].'&amp;lang='.$lang);
+        $init_payment['confirmLink'] .= (parse_url($init_payment['confirmLink'], \PHP_URL_QUERY) ? '&' : '?').'lang='.$lang;
+
+        $this->response->redirect($init_payment['confirmLink']);
     }
 
     public function confirm()
@@ -499,7 +492,7 @@ class ControllerPaymentKevin extends Controller
 
         $payment_id = $get_payment_status['id'];
 
-        //Validate Signature
+        // Validate Signature
         if (!empty($_SERVER['HTTPS']) || $_SERVER['HTTPS'] == 1) {
             $webhook_url = HTTPS_SERVER.'index.php?route=payment/kevin/webhook';
         } else {

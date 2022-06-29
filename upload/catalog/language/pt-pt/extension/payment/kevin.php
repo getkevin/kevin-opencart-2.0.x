@@ -31,15 +31,15 @@ $_['text_subject'] = '%s reembolsou seu dinheiro. ID da encomenda: %s';
 $_['text_thank_you'] = 'Obrigado por comprar <br /> <strong> %s </strong>';
 $_['text_title'] = 'kevin.';
 
-//errors
+// Errors
 $_['error_bank'] = 'Banco não selecionado! Escolha o seu banco.';
 $_['error_currency'] = 'Selecione < strong > & euro; < /strong > como a moeda de pagamento.';
 $_['error_kevin_payment'] = 'Erro. Entre em contato com o vendedor para obter mais informações ou tente usar outro método de pagamento.';
 $_['error_kevin_payment_id'] = 'Erro. ID de pagamento não devolvido pelo sistema de pagamento. Entre em contato com o vendedor para obter mais informações.';
 
-//Button
+// Button
 $_['button_confirm'] = 'Confirmar a ordem';
 $_['button_search'] = 'Pesquisa autocomplete';
 
-//Help
+// Help
 $_['help_serch_bank'] = 'Pesquisar bancária';
