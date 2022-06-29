@@ -105,8 +105,6 @@ class ModelModuleKevinRefund extends Model
             $sql .= ' GROUP BY ko.order_id ORDER BY o.order_id';
         }
 
-        //$sql .= " GROUP BY ko.order_id ";
-
         if (isset($data['order']) && ($data['order'] == 'DESC')) {
             $sql .= ' DESC';
         } else {
@@ -231,7 +229,7 @@ class ModelModuleKevinRefund extends Model
                 ];
             }
         }
-        //echo '<pre>fin'; print_r( $products); echo '</pre>';
+
         return $products;
     }
 

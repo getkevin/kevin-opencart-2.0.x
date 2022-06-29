@@ -93,7 +93,7 @@ $_['column_restocked_quantity'] = 'Cantidad reabastecida';
 $_['column_status'] = 'Estado';
 $_['column_total'] = 'Total';
 
-//Entry
+// Entry
 $_['entry_comment'] = 'Comentario';
 $_['entry_currency'] = 'Moneda';
 $_['entry_customer'] = 'Cliente';
